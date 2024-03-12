@@ -1,6 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
+const jwt = require('jsonwebtoken'); // import jwt library
 
 const app = express();
 const PORT = process.env.PORT || 3002;
@@ -25,15 +26,9 @@ app.use(bodyParser.json());
 
 // Routes
 app.post('/signup', async (req, res) => {
-
-
-    console.log("here")
   try {
     const { username, email, password } = req.body;
 
-    console.log(username)
-    console.log(email)
-    console.log(password)
     // Check if user already exists
     const existingUser = await User.findOne({ email });
     if (existingUser) {
@@ -47,6 +42,27 @@ app.post('/signup', async (req, res) => {
     console.error(error);
     res.status(500).json({ error: 'Internal server error' });
   }
+});
+
+// Endpoint for user login
+app.post('/login', async (req, res) => {
+  const { email, password } = req.body;
+
+  // Find user by email
+  const user = await User.findOne({ email });
+  if (!user) {
+    return res.status(404).json({ error: 'User not found' });
+  }
+
+  // Compare password
+  if (user.password !== password) {
+    return res.status(401).json({ error: 'Invalid password' });
+  }
+
+  // Generate JWT token
+  const token = jwt.sign({ email: user.email }, 'your_secret_key_here', { expiresIn: '1h' });
+
+  res.json({ token });
 });
 
 // Start server

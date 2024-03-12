@@ -21,12 +21,12 @@ class _LoginScreenState extends State<LoginScreen> {
   UserLogin() async {
     var regBody = {'email': email.text, 'password': password.text};
     try {
-      var resp = await http.post(Uri.parse('http://192.168.0.105:3002/login'),
+      var resp = await http.post(Uri.parse('http://192.168.100.9:3002/login'),
           body: jsonEncode(regBody),
           headers: {'Content-Type': 'application/json'});
       var res = json.decode(resp.body);
       print(res);
-      if (res["Status"]) {
+      if (res.containsKey('token')) {
         username = email.text;
 
         showDialog(
