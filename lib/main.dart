@@ -1,3 +1,4 @@
+import 'package:agri/Screens/AddAddress.dart';
 import 'package:agri/Screens/Categorie.dart';
 import 'package:agri/Screens/Categorie_Consulting.dart';
 import 'package:agri/Screens/Chat.dart';
@@ -9,6 +10,9 @@ import 'package:agri/Screens/News.dart';
 import 'package:agri/Screens/SignupScreen.dart';
 import 'package:agri/Screens/SplashScreen.dart';
 import 'package:agri/Screens/ViewEvent.dart';
+import 'package:agri/Screens/AddAddress.dart';
+import 'package:agri/Screens/AddCard.dart';
+import 'package:agri/Screens/OrderSummary.dart';
 
 import 'package:device_preview/device_preview.dart';
 import 'package:flutter/foundation.dart';
@@ -43,7 +47,7 @@ class MyApp extends StatelessWidget {
             debugShowCheckedModeBanner: false,
             title: 'MaterialApp',
             theme: ThemeData.dark(),
-            home: SplashScreen());
+            home: AddCardScreen());
       },
     );
   }
