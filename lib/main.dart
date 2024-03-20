@@ -14,6 +14,12 @@ import 'package:agri/Screens/AddAddress.dart';
 import 'package:agri/Screens/AddCard.dart';
 import 'package:agri/Screens/OrderSummary.dart';
 import 'package:agri/Screens/OrderSuccess.dart';
+import 'package:agri/Screens/Checkout.dart';
+import 'package:agri/Screens/Terms.dart';
+import 'package:agri/Screens/Weather.dart';
+import 'package:agri/Screens/ProfilePage.dart';
+import 'package:agri/Screens/EditProfile.dart';
+import 'package:agri/Screens/MarketUpdateScreen.dart';
 
 import 'package:device_preview/device_preview.dart';
 import 'package:flutter/foundation.dart';
@@ -48,7 +54,7 @@ class MyApp extends StatelessWidget {
             debugShowCheckedModeBanner: false,
             title: 'MaterialApp',
             theme: ThemeData.dark(),
-            home: OrderPlacedScreen());
+            home: MarketUpdatesScreen());
       },
     );
   }

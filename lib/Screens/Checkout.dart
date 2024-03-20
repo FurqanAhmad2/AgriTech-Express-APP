@@ -31,14 +31,22 @@ class _CheckoutPageState extends State<CheckoutPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Checkout'),
+        title: Text('Checkout',
+            style: TextStyle(
+            color: Colors.black
+        ),),
       ),
+      backgroundColor: Colors.white, // Set background color to white
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text('Delivery Address'),
+            Text('Delivery Address'
+            ,
+            style: TextStyle(
+              color: Colors.black
+            ),),
             SizedBox(height: 8.0),
             GestureDetector(
               onTap: () {
@@ -50,7 +58,10 @@ class _CheckoutPageState extends State<CheckoutPage> {
                   border: Border.all(color: Colors.grey),
                   borderRadius: BorderRadius.circular(8.0),
                 ),
-                child: Text('+ Add New Address'),
+                child: Text('+ Add New Address' ,
+                  style: TextStyle(
+                      color: Colors.black
+                  ),),
               ),
             ),
             SizedBox(height: 16.0),
@@ -63,14 +74,17 @@ class _CheckoutPageState extends State<CheckoutPage> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(address),
+                  Text(address ,style: TextStyle(color: Colors.black),),
                   SizedBox(height: 8.0),
-                  Text('Phone: $phoneNumber'),
+                  Text('Phone: $phoneNumber'  ,style: TextStyle(color: Colors.black),),
                 ],
               ),
             ),
             SizedBox(height: 16.0),
-            Text('Payment Method'),
+            Text('Payment Method' ,
+              style: TextStyle(
+                  color: Colors.black
+              ),),
             SizedBox(height: 8.0),
             GestureDetector(
               onTap: () {
@@ -85,7 +99,10 @@ class _CheckoutPageState extends State<CheckoutPage> {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text('Cash On Delivery'),
+                    Text('Cash On Delivery'  ,
+                      style: TextStyle(
+                          color: Colors.black
+                      ),),
                     Icon(Icons.money),
                   ],
                 ),
@@ -101,14 +118,14 @@ class _CheckoutPageState extends State<CheckoutPage> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(cardHolderName),
-                  Text(cardNumber),
+                  Text(cardHolderName , style: TextStyle(color: Colors.black),),
+                  Text(cardNumber  ,style: TextStyle(color: Colors.black),),
                   SizedBox(height: 8.0),
                   Row(
                     children: [
-                      Text('Expiry Date: $expiryDate'),
+                      Text('Expiry Date: $expiryDate', style: TextStyle(color: Colors.black),),
                       SizedBox(width: 16.0),
-                      Text('Cvv: $cvv'),
+                      Text('Cvv: $cvv' , style: TextStyle(color: Colors.black),),
                     ],
                   ),
                 ],
@@ -125,7 +142,10 @@ class _CheckoutPageState extends State<CheckoutPage> {
                   border: Border.all(color: Colors.grey),
                   borderRadius: BorderRadius.circular(8.0),
                 ),
-                child: Text('+ Add Debit / Credit Card'),
+                child: Text('+ Add Debit / Credit Card'  ,
+                  style: TextStyle(
+                      color: Colors.black
+                  ),),
               ),
             ),
             Spacer(),
@@ -135,9 +155,16 @@ class _CheckoutPageState extends State<CheckoutPage> {
                 onPressed: () {
                   // Handle checkout
                 },
-                child: Text('Next'),
-              ),
-            ),
+                child: Text('Next', style: TextStyle(
+                    color: Colors.white
+                ),),
+                style: ElevatedButton.styleFrom(
+                  primary: Colors.green, // Set save button color to green
+
+                ),
+              ),),
+        
+
           ],
         ),
       ),
