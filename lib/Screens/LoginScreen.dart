@@ -3,9 +3,9 @@ import 'dart:convert';
 import 'package:agri/Screens/HomeScreen.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:sizer/sizer.dart';
 import 'package:http/http.dart' as http;
-import 'package:agri/Widget/GlobalVar.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:sizer/sizer.dart';
 
 class LoginScreen extends StatefulWidget {
   LoginScreen({Key? key});
@@ -27,7 +27,8 @@ class _LoginScreenState extends State<LoginScreen> {
       var res = json.decode(resp.body);
       print(res);
       if (res.containsKey('token')) {
-        username = email.text;
+        SharedPreferences prefs = await SharedPreferences.getInstance();
+        await prefs.setString('email', email.text);
 
         showDialog(
             context: context,
@@ -102,7 +103,6 @@ class _LoginScreenState extends State<LoginScreen> {
                 SizedBox(
                   height: 1.h,
                 ),
-                // Container with group-AMP.png at the top
                 Container(
                   margin: EdgeInsets.fromLTRB(30.w, 7.h, 0.w, 0.h),
                   width: 35.w,
@@ -265,7 +265,6 @@ class _LoginScreenState extends State<LoginScreen> {
                     ),
                   ),
                 ),
-
                 Container(
                   margin: EdgeInsets.fromLTRB(17.w, 0.h, 0.w, 0.h),
                   child: Center(

@@ -1,4 +1,6 @@
 import 'package:agri/Screens/Categorie.dart';
+import 'package:agri/Screens/AddAddress.dart';
+import 'package:agri/Screens/EditProfile.dart';
 import 'package:agri/Screens/Categorie_Consulting.dart';
 import 'package:agri/Screens/Consulting.dart';
 import 'package:agri/Screens/Farmer_Consumer_ask.dart';
@@ -248,6 +250,94 @@ class HomeScreen extends StatelessWidget {
                             margin: EdgeInsets.only(left: 6.w),
                             child: Text(
                               "Events",
+                              style: GoogleFonts.adventPro(
+                                  fontSize: 18.sp,
+                                  fontWeight: FontWeight.w700,
+                                  color: Color(0xff1f751f)),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                    Column(
+                      children: [
+                        Container(
+                          margin: EdgeInsets.only(left: 7.w),
+                          width: 28.w,
+                          height: 12.h,
+                          decoration: BoxDecoration(
+                            color: Color(0x141f751f),
+                            borderRadius: BorderRadius.circular(25.w),
+                          ),
+                          child: Center(
+                            child: TextButton(
+                              onPressed: () {},
+                              child: Image.asset(
+                                'assets/page-1/images/group-3-ith.png',
+                                width: 25.w,
+                                height: 8.h,
+                              ),
+                            ),
+                          ),
+                        ),
+                        SizedBox(
+                          height: 1.h,
+                        ),
+                        TextButton(
+                          onPressed: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => AddAddressScreen()));
+                          },
+                          child: Container(
+                            margin: EdgeInsets.only(left: 6.w),
+                            child: Text(
+                              "Add Address",
+                              style: GoogleFonts.adventPro(
+                                  fontSize: 18.sp,
+                                  fontWeight: FontWeight.w700,
+                                  color: Color(0xff1f751f)),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                    Column(
+                      children: [
+                        Container(
+                          margin: EdgeInsets.only(left: 7.w),
+                          width: 28.w,
+                          height: 12.h,
+                          decoration: BoxDecoration(
+                            color: Color(0x141f751f),
+                            borderRadius: BorderRadius.circular(25.w),
+                          ),
+                          child: Center(
+                            child: TextButton(
+                              onPressed: () {},
+                              child: Image.asset(
+                                'assets/page-1/images/group-3-ith.png',
+                                width: 25.w,
+                                height: 8.h,
+                              ),
+                            ),
+                          ),
+                        ),
+                        SizedBox(
+                          height: 1.h,
+                        ),
+                        TextButton(
+                          onPressed: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => EditProfileScreen()));
+                          },
+                          child: Container(
+                            margin: EdgeInsets.only(left: 6.w),
+                            child: Text(
+                              "Edit Profile",
                               style: GoogleFonts.adventPro(
                                   fontSize: 18.sp,
                                   fontWeight: FontWeight.w700,
