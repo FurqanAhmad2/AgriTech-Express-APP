@@ -1,11 +1,13 @@
 import 'dart:convert';
 
 import 'package:agri/Screens/HomeScreen.dart';
+import 'package:agri/Screens/SignupScreen.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:sizer/sizer.dart';
+import 'package:agri/Screens/SignupScreen.dart';
 
 class LoginScreen extends StatefulWidget {
   LoginScreen({Key? key});
@@ -21,7 +23,7 @@ class _LoginScreenState extends State<LoginScreen> {
   UserLogin() async {
     var regBody = {'email': email.text, 'password': password.text};
     try {
-      var resp = await http.post(Uri.parse('http://192.168.100.9:3002/login'),
+      var resp = await http.post(Uri.parse('http://192.168.100.67:3002/login'),
           body: jsonEncode(regBody),
           headers: {'Content-Type': 'application/json'});
       var res = json.decode(resp.body);
@@ -278,7 +280,13 @@ class _LoginScreenState extends State<LoginScreen> {
                               color: Color(0xff8c8c8c)),
                         ),
                         TextButton(
-                            onPressed: () {},
+                            onPressed: () {
+                              // Navigate to the signup page screen
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(builder: (context) => SignUpScreen()),
+                              );
+                            },
                             child: Text(
                               "Sign up",
                               style: GoogleFonts.montserrat(

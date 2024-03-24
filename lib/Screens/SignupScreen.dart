@@ -25,7 +25,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
       'password': password.text
     };
     try {
-      var resp = await http.post(Uri.parse('http://192.168.100.9:3002/signup'),
+      var resp = await http.post(Uri.parse('http://192.168.100.67:3002/signup'),
           body: jsonEncode(regBody),
           headers: {'Content-Type': 'application/json'});
       var res = json.decode(resp.body);
