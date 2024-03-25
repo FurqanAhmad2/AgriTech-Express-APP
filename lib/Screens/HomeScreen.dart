@@ -27,6 +27,8 @@ class HomeScreen extends StatelessWidget {
           decoration: BoxDecoration(
             color: Color(0xffffffff),
           ),
+
+    child: SingleChildScrollView(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -403,6 +405,7 @@ class HomeScreen extends StatelessWidget {
           ),
         ),
       ),
+      )
     );
   }
 }

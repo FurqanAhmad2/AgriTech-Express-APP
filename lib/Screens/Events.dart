@@ -89,8 +89,8 @@ class Event extends StatelessWidget {
                         children: [
                           Container(
                             margin: EdgeInsets.only(left: 8.w),
-                            width: 35.w,
-                            height: 24.h,
+                            width: 37.w,
+                            height: 26.h,
                             decoration: BoxDecoration(
                                 color: Colors.white,
                                 boxShadow: [
@@ -241,8 +241,8 @@ class Event extends StatelessWidget {
                         children: [
                           Container(
                             margin: EdgeInsets.only(left: 8.w),
-                            width: 35.w,
-                            height: 24.h,
+                            width: 37.w,
+                            height: 26.h,
                             decoration: BoxDecoration(
                                 color: Colors.white,
                                 boxShadow: [
@@ -393,8 +393,8 @@ class Event extends StatelessWidget {
                         children: [
                           Container(
                             margin: EdgeInsets.only(left: 8.w),
-                            width: 35.w,
-                            height: 24.h,
+                            width: 37.w,
+                            height: 26.h,
                             decoration: BoxDecoration(
                                 color: Colors.white,
                                 boxShadow: [
@@ -545,8 +545,8 @@ class Event extends StatelessWidget {
                         children: [
                           Container(
                             margin: EdgeInsets.only(left: 8.w),
-                            width: 35.w,
-                            height: 24.h,
+                            width: 37.w,
+                            height: 26.h,
                             decoration: BoxDecoration(
                                 color: Colors.white,
                                 boxShadow: [

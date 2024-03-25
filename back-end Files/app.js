@@ -41,6 +41,10 @@ app.use(bodyParser.json());
 app.post('/signup', async (req, res) => {
   try {
     const { username, email, password } = req.body;
+    console.log("i am here")
+    console.log(username)
+    console.log(email)
+    console.log(password)
 
     // Check if user already exists
     const existingUser = await User.findOne({ email });

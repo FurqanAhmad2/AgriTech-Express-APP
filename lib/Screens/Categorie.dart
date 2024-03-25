@@ -72,7 +72,7 @@ class Categorie extends StatelessWidget {
                           Container(
                             margin: EdgeInsets.only(left: 5.w, top: 4.h),
                             width: 40.w,
-                            height: 30.h,
+                            height: 31.h,
                             decoration: BoxDecoration(
                                 color: Color(0xff3bb178),
                                 border: Border.all(),
@@ -145,7 +145,7 @@ class Categorie extends StatelessWidget {
                           Container(
                             margin: EdgeInsets.only(left: 5.w, top: 4.h),
                             width: 40.w,
-                            height: 30.h,
+                            height: 31.h,
                             decoration: BoxDecoration(
                                 color: Color(0xff3bb178),
                                 border: Border.all(),
@@ -219,7 +219,7 @@ class Categorie extends StatelessWidget {
                           Container(
                             margin: EdgeInsets.only(left: 5.w, top: 4.h),
                             width: 40.w,
-                            height: 30.h,
+                            height: 31.h,
                             decoration: BoxDecoration(
                                 color: Color(0xff3bb178),
                                 border: Border.all(),
@@ -292,7 +292,7 @@ class Categorie extends StatelessWidget {
                           Container(
                             margin: EdgeInsets.only(left: 5.w, top: 4.h),
                             width: 40.w,
-                            height: 30.h,
+                            height: 31.h,
                             decoration: BoxDecoration(
                                 color: Color(0xff3bb178),
                                 border: Border.all(),

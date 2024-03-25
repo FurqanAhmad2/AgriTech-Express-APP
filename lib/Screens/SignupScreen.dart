@@ -247,7 +247,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     padding: EdgeInsets.symmetric(horizontal: 5.w),
                     child: TextFormField(
                       onChanged: (value) {
-                        email.text = value;
+                        password.text = value;
                       },
                       style: GoogleFonts.montserrat(
                           fontSize: 14.sp,
