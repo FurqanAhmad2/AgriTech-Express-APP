@@ -54,7 +54,7 @@ class MyApp extends StatelessWidget {
             debugShowCheckedModeBanner: false,
             title: 'MaterialApp',
             theme: ThemeData.dark(),
-            home: LoginScreen());
+            home: SplashScreen());
       },
     );
   }

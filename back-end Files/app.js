@@ -33,6 +33,28 @@ const addressSchema = new mongoose.Schema({
 
 const Address = mongoose.model('Address', addressSchema);
 
+
+const newsSchema = new mongoose.Schema({
+  _id: {
+    type: String,
+    required: true,
+  },
+  title: {
+    type: String,
+    required: true,
+  },
+  description: {
+    type: String,
+    required: true,
+  },
+  imageUrl: {
+    type: String,
+    required: true,
+  },
+});
+
+const News = mongoose.model('News', newsSchema);
+
 // Middleware
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
@@ -66,6 +88,7 @@ app.post('/login', async (req, res) => {
   const { email, password } = req.body;
 
   console.log(email,"login")
+  console.log(password,"login")
   // Find user by email
   const user = await User.findOne({ email });
   if (!user) {
@@ -74,6 +97,8 @@ app.post('/login', async (req, res) => {
 
   // Compare password
   if (user.password !== password) {
+  console.log(password,"Invalid")
+
     return res.status(401).json({ error: 'Invalid password' });
   }
 
@@ -172,6 +197,20 @@ app.put('/update_user/:email', async (req, res) => {
   }
 });
 
+
+// Endpoint for getting all news articles
+app.get('/news', async (req, res) => {
+  try {
+    // Retrieve all news articles from the database
+    const newsArticles = await News.find();
+
+    // Respond with the list of news articles
+    res.status(200).json(newsArticles);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'Internal server error' });
+  }
+});
 
 
 // Start server

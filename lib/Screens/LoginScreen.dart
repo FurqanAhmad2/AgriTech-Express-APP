@@ -40,6 +40,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 actions: [
                   ElevatedButton(
                     onPressed: () {
+                      print("Here");
                       Navigator.push(
                           context,
                           MaterialPageRoute(
@@ -52,7 +53,9 @@ class _LoginScreenState extends State<LoginScreen> {
                 ],
               );
             });
-      } else {
+      }
+
+      else {
         showDialog(
             context: context,
             builder: (context) {

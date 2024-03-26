@@ -26,7 +26,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
 
     // Make a request to fetch user data from the backend API
     try {
-      final response = await http.get(Uri.parse('http://192.168.100.9:3002/user_data/$userEmail'));
+      final response = await http.get(Uri.parse('http://192.168.100.67:3002/user_data/$userEmail'));
 
       if (response.statusCode == 200) {
         // Parse the response body
@@ -59,7 +59,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
     // Make a request to update user data in the backend API
     try {
       final response = await http.put(
-        Uri.parse('http://192.168.100.9:3002/update_user/$userEmail'),
+        Uri.parse('http://192.168.100.67:3002/update_user/$userEmail'),
         body: jsonEncode({
           'username': username,
           'phone': phone,
@@ -85,7 +85,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Edit Profile', style: TextStyle(color: Colors.white)),
+        title: Text('Edit Profile', style: TextStyle(color: Colors.black)), // Set app bar text color to black
         backgroundColor: Colors.green,
       ),
       backgroundColor: Colors.white,
@@ -110,8 +110,10 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
               ),
             ),
             SizedBox(height: 16.0),
+
+
             Text(
-              'Username Lorem',
+              _usernameController.text,
               style: TextStyle(
                 fontSize: 18.0,
                 fontWeight: FontWeight.bold,
@@ -119,34 +121,40 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
               ),
             ),
             Text(
-              'user@email.com',
+              _emailController.text,
               style: TextStyle(
                 color: Colors.black,
               ),
             ),
+
+
+
             SizedBox(height: 32.0),
             TextField(
               controller: _usernameController,
+              style: TextStyle(color: Colors.black), // Set text color to black
               decoration: InputDecoration(
                 labelText: 'Username',
-                prefixIcon: Icon(Icons.person),
+                prefixIcon: Icon(Icons.person, color: Colors.black), // Set icon color to black
               ),
             ),
             SizedBox(height: 16.0),
             TextField(
               controller: _emailController,
+              style: TextStyle(color: Colors.black), // Set text color to black
               decoration: InputDecoration(
                 labelText: 'Email',
-                prefixIcon: Icon(Icons.email),
+                prefixIcon: Icon(Icons.email, color: Colors.black), // Set icon color to black
               ),
               enabled: false, // Disable editing
             ),
             SizedBox(height: 16.0),
             TextField(
               controller: _phoneController,
+              style: TextStyle(color: Colors.black), // Set text color to black
               decoration: InputDecoration(
                 labelText: 'Phone No.',
-                prefixIcon: Icon(Icons.phone),
+                prefixIcon: Icon(Icons.phone, color: Colors.black), // Set icon color to black
               ),
             ),
             SizedBox(height: 32.0),

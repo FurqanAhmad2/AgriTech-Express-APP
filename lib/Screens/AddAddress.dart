@@ -46,7 +46,7 @@ class _AddAddressScreenState extends State<AddAddressScreen> {
 
       try {
         var response = await http.post(
-          Uri.parse('http://192.168.100.9:3002/save_address'),
+          Uri.parse('http://192.168.100.67:3002/save_address'),
           body: jsonEncode(addressData),
           headers: {'Content-Type': 'application/json'},
         );
@@ -102,6 +102,7 @@ class _AddAddressScreenState extends State<AddAddressScreen> {
                   controller: _fullNameController,
                   decoration: InputDecoration(
                     labelText: 'Full Name',
+                    labelStyle: TextStyle(color: Colors.black),
                   ),
                   validator: (value) {
                     if (value!.isEmpty) {
@@ -114,6 +115,7 @@ class _AddAddressScreenState extends State<AddAddressScreen> {
                   controller: _phoneController,
                   decoration: InputDecoration(
                     labelText: 'Phone No.',
+                    labelStyle: TextStyle(color: Colors.black),
                   ),
                   validator: (value) {
                     if (value!.isEmpty) {
@@ -127,6 +129,7 @@ class _AddAddressScreenState extends State<AddAddressScreen> {
                   decoration: InputDecoration(
                     labelText: 'Address',
                     contentPadding: EdgeInsets.symmetric(vertical: 20.0),
+                    labelStyle: TextStyle(color: Colors.black),
                   ),
                   validator: (value) {
                     if (value!.isEmpty) {
@@ -142,6 +145,7 @@ class _AddAddressScreenState extends State<AddAddressScreen> {
                         controller: _cityController,
                         decoration: InputDecoration(
                           labelText: 'City / District',
+                          labelStyle: TextStyle(color: Colors.black),
                         ),
                         validator: (value) {
                           if (value!.isEmpty) {
@@ -157,6 +161,7 @@ class _AddAddressScreenState extends State<AddAddressScreen> {
                         controller: _stateController,
                         decoration: InputDecoration(
                           labelText: 'State',
+                          labelStyle: TextStyle(color: Colors.black),
                         ),
                         validator: (value) {
                           if (value!.isEmpty) {
@@ -173,6 +178,7 @@ class _AddAddressScreenState extends State<AddAddressScreen> {
                   'Save Address As',
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
+                    color: Colors.black,
                   ),
                 ),
                 Row(

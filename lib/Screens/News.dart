@@ -1,11 +1,39 @@
-import 'package:agri/Screens/Farmer_Consumer_ask.dart';
-import 'package:agri/Screens/Events.dart';
+import 'dart:convert';
 import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
 import 'package:google_fonts/google_fonts.dart';
 import 'package:sizer/sizer.dart';
 
-class News extends StatelessWidget {
+class News extends StatefulWidget {
   const News({Key? key});
+
+  @override
+  _NewsState createState() => _NewsState();
+}
+
+class _NewsState extends State<News> {
+  List<dynamic> newsData = [];
+
+  @override
+  void initState() {
+    super.initState();
+    fetchNewsData();
+  }
+
+  Future<void> fetchNewsData() async {
+    try {
+      final response = await http.get(Uri.parse('http://192.168.100.67:3002/news'));
+      if (response.statusCode == 200) {
+        setState(() {
+          newsData = json.decode(response.body);
+        });
+      } else {
+        throw Exception('Failed to load news data');
+      }
+    } catch (error) {
+      print('Error fetching news data: $error');
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -28,13 +56,14 @@ class News extends StatelessWidget {
                   width: double.infinity,
                   height: 20.h,
                   decoration: BoxDecoration(
-                      color: Color(0xff3bb178),
-                      borderRadius: BorderRadius.only(
-                        topLeft: Radius.circular(2.h),
-                        topRight: Radius.circular(2.h),
-                        bottomRight: Radius.circular(7.h),
-                        bottomLeft: Radius.circular(7.h),
-                      )),
+                    color: Color(0xff3bb178),
+                    borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(2.h),
+                      topRight: Radius.circular(2.h),
+                      bottomRight: Radius.circular(7.h),
+                      bottomLeft: Radius.circular(7.h),
+                    ),
+                  ),
                   child: Row(
                     children: [
                       Container(
@@ -42,9 +71,10 @@ class News extends StatelessWidget {
                         child: Text(
                           "News",
                           style: GoogleFonts.adventPro(
-                              fontSize: 26.sp,
-                              fontWeight: FontWeight.w700,
-                              color: Color(0xffffffff)),
+                            fontSize: 26.sp,
+                            fontWeight: FontWeight.w700,
+                            color: Color(0xffffffff),
+                          ),
                         ),
                       ),
                       SizedBox(
@@ -55,12 +85,13 @@ class News extends StatelessWidget {
                         width: 12.w,
                         height: 12.h,
                         child: TextButton(
-                            onPressed: () {},
-                            child: Image.asset(
-                              'assets/page-1/images/noti-icon.png',
-                              width: 10.w,
-                              height: 10.h,
-                            )),
+                          onPressed: () {},
+                          child: Image.asset(
+                            'assets/page-1/images/noti-icon.png',
+                            width: 10.w,
+                            height: 10.h,
+                          ),
+                        ),
                       ),
                     ],
                   ),
@@ -70,96 +101,66 @@ class News extends StatelessWidget {
                   child: Text(
                     "Today",
                     style: GoogleFonts.adventPro(
-                        fontSize: 26.sp,
-                        fontWeight: FontWeight.w700,
-                        color: Color(0xff1f751f)),
+                      fontSize: 26.sp,
+                      fontWeight: FontWeight.w700,
+                      color: Color(0xff1f751f),
+                    ),
                   ),
                 ),
                 SizedBox(
                   height: 2.h,
                 ),
-                Container(
-                  child: Column(
-                    children: [
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
+                ListView.builder(
+                  shrinkWrap: true,
+                  physics: NeverScrollableScrollPhysics(),
+                  itemCount: newsData.length,
+                  itemBuilder: (context, index) {
+                    final news = newsData[index];
+                    return Container(
+                      margin: EdgeInsets.symmetric(vertical: 1.h),
+                      child: Column(
                         children: [
                           Container(
-                            margin: EdgeInsets.only(left: 2.w),
-                            width: 90.w,
+                            width: double.infinity,
                             height: 30.h,
                             decoration: BoxDecoration(
                               image: DecorationImage(
-                                  image: AssetImage(
-                                      'assets/page-1/images/DetailEvent.png'),
-                                  fit: BoxFit.cover),
-                              color: Colors.white,
-                              borderRadius: BorderRadius.only(
-                                  topLeft: Radius.circular(2.h),
-                                  topRight: Radius.circular(2.h),
-                                  bottomRight: Radius.circular(2.h),
-                                  bottomLeft: Radius.circular(2.h)),
+                                image: NetworkImage(news['imageUrl']),
+                                fit: BoxFit.cover,
+                              ),
+                              borderRadius: BorderRadius.circular(2.h),
+                            ),
+                          ),
+                          Container(
+                            margin: EdgeInsets.symmetric(horizontal: 4.w),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                SizedBox(height: 1.h),
+                                Text(
+                                  news['title'],
+                                  style: GoogleFonts.adventPro(
+                                    fontSize: 16.sp,
+                                    fontWeight: FontWeight.w700,
+                                    color: Color(0xff000000),
+                                  ),
+                                ),
+                                SizedBox(height: 0.5.h),
+                                Text(
+                                  news['description'],
+                                  softWrap: true,
+                                  style: GoogleFonts.adventPro(
+                                    fontSize: 14.sp,
+                                    color: Color(0xff333333),
+                                  ),
+                                ),
+                              ],
                             ),
                           ),
                         ],
                       ),
-                      Container(
-                        margin:
-                            EdgeInsets.only(left: 9.w, top: 1.h, right: 1.w),
-                        child: Text(
-                          softWrap: true,
-                          "Pakistan approves agriculture relief package to support farmers",
-                          style: GoogleFonts.adventPro(
-                              fontSize: 16.sp,
-                              fontWeight: FontWeight.w700,
-                              color: Color(0xff000000)),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-                SizedBox(
-                  height: 3.h,
-                ),
-                Container(
-                  child: Column(
-                    children: [
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Container(
-                            margin: EdgeInsets.only(left: 2.w),
-                            width: 90.w,
-                            height: 30.h,
-                            decoration: BoxDecoration(
-                              image: DecorationImage(
-                                  image: AssetImage(
-                                      'assets/page-1/images/DetailEvent.png'),
-                                  fit: BoxFit.cover),
-                              color: Colors.white,
-                              borderRadius: BorderRadius.only(
-                                  topLeft: Radius.circular(2.h),
-                                  topRight: Radius.circular(2.h),
-                                  bottomRight: Radius.circular(2.h),
-                                  bottomLeft: Radius.circular(2.h)),
-                            ),
-                          ),
-                        ],
-                      ),
-                      Container(
-                        margin:
-                            EdgeInsets.only(left: 9.w, top: 1.h, right: 1.w),
-                        child: Text(
-                          softWrap: true,
-                          "Pakistan approves agriculture relief package to support farmers",
-                          style: GoogleFonts.adventPro(
-                              fontSize: 16.sp,
-                              fontWeight: FontWeight.w700,
-                              color: Color(0xff000000)),
-                        ),
-                      ),
-                    ],
-                  ),
+                    );
+                  },
                 ),
               ],
             ),
