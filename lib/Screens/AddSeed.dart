@@ -61,6 +61,7 @@ class _AddSeedPageState extends State<AddSeedPage> {
                   labelText: 'Seed Name',
                   labelStyle: TextStyle(color: Colors.black), // Set label text color to black
                 ),
+                style: TextStyle(color: Colors.black), // Set input text color to black
               ),
               SizedBox(height: 16.0),
               TextField(
@@ -69,14 +70,17 @@ class _AddSeedPageState extends State<AddSeedPage> {
                   labelText: 'Seed Price',
                   labelStyle: TextStyle(color: Colors.black), // Set label text color to black
                 ),
+                style: TextStyle(color: Colors.black), // Set input text color to black
               ),
               SizedBox(height: 16.0),
               TextField(
                 controller: imageLinkController,
                 decoration: InputDecoration(
                   labelText: 'Image Link',
-                  labelStyle: TextStyle(color: Colors.black), // Set label text color to black
+                  labelStyle: TextStyle(color: Colors.black),
+                  // Set label text color to black
                 ),
+                style: TextStyle(color: Colors.black), // Set input text color to black
               ),
               SizedBox(height: 16.0), // Add some spacing between fields
               TextField(
@@ -85,6 +89,7 @@ class _AddSeedPageState extends State<AddSeedPage> {
                   labelText: 'Description', // Label for the description field
                   labelStyle: TextStyle(color: Colors.black), // Set label text color to black
                 ),
+                style: TextStyle(color: Colors.black), // Set input text color to black
               ),
               SizedBox(height: 32.0), // Add some spacing below the fields
               ElevatedButton(

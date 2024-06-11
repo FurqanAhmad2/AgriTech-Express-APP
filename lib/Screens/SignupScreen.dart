@@ -19,6 +19,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
   TextEditingController email = TextEditingController();
   TextEditingController username = TextEditingController();
   TextEditingController password = TextEditingController();
+  TextEditingController confirmPassword = TextEditingController();
 
   void registerUser() async {
     var regBody = {
@@ -46,7 +47,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => TwoFactorAuthScreen(email: email.text))); // pass the email
+                              builder: (context) =>
+                                  TwoFactorAuthScreen(email: email.text))); // pass the email
                     },
                     child: Center(
                       child: Text('OK'),
@@ -213,6 +215,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   child: Padding(
                     padding: EdgeInsets.symmetric(horizontal: 5.w),
                     child: TextFormField(
+                      obscureText: true, // Set this to obscure the text
                       validator: (value) {
                         if (value!.isEmpty) {
                           return "Invalid Password";
@@ -248,8 +251,18 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   child: Padding(
                     padding: EdgeInsets.symmetric(horizontal: 5.w),
                     child: TextFormField(
+                      obscureText: true, // Set this to obscure the text
+                      validator: (value) {
+                        if (value!.isEmpty) {
+                          return "Invalid Confirm Password";
+                        } else if (value != password.text) {
+                          return "Passwords do not match";
+                        } else {
+                          return null;
+                        }
+                      },
                       onChanged: (value) {
-                        password.text = value;
+                        confirmPassword.text = value;
                       },
                       style: GoogleFonts.montserrat(
                           fontSize: 14.sp,
@@ -272,7 +285,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       child: TextButton(
                         onPressed: () {},
                         child: Text(
-                          "I Agree in Term & Policy",
+                          "I Agree to the Terms & Policy",
                           style: GoogleFonts.montserrat(
                               fontSize: 12.sp,
                               color: Color(0xffef8503),
